@@ -582,4 +582,55 @@
 
 <script>
   const searchBar = document.getElementById('searchBar');
-  con
+  const uptimeFilter = document.getElementById('uptimeFilter');
+  const ramFilter = document.getElementById('ramFilter');
+  const locationFilter = document.getElementById('locationFilter');
+
+  function filterCards() {
+    const cards = document.querySelectorAll('.cards');
+
+    const search = searchBar.value.toLowerCase();
+    const uptime = uptimeFilter.value;
+    const ram = parseInt(ramFilter.value);
+    const location = locationFilter.value.toLowerCase();
+
+    cards.forEach(card => {
+      const name = card.querySelector('.name').textContent.toLowerCase();
+      const infoContainer = card.querySelector('.all-info');
+      const infoText = infoContainer.textContent.toLowerCase();
+
+      const matchesSearch = name.includes(search);
+      const matchesLocation = !location || infoText.includes(location);
+
+      let matchesUptime = true;
+      if (uptime === "online") {
+        matchesUptime = infoContainer.querySelector('.online') !== null;
+      } else if (uptime === "offline") {
+        matchesUptime = infoContainer.querySelector('.offline') !== null;
+      }
+
+      let ramMatch = true;
+      if (!isNaN(ram)) {
+        const ramMatchText = infoText.match(/ram\s*:\s*([\d.]+)\s*gb/i);
+        if (ramMatchText) {
+          const ramAmount = parseFloat(ramMatchText[1]);
+          ramMatch = ramAmount >= ram;
+        } else {
+          ramMatch = false;
+        }
+      }
+
+      if (matchesSearch && matchesUptime && matchesLocation && ramMatch) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  searchBar.addEventListener('input', filterCards);
+  uptimeFilter.addEventListener('change', filterCards);
+  ramFilter.addEventListener('change', filterCards);
+  locationFilter.addEventListener('change', filterCards);
+</script>
+</html>
