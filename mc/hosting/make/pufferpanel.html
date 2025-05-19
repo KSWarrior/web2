@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install MC Server</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #3fff05;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #3fff05;
+        }
+        pre {
+            background: #222;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            text-align: left;
+        }
+        .copy {
+            background: #3fff05;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #2ecc04;
+        }
+        h1 {
+          font-size: 26px;
+        }
+        p {
+          color: lightgray;
+        }
+        .visit {
+          background: #3fff05;
+          color: #000;
+          border: none;
+          padding: 10px 18px;
+          font-size: 16px;
+          cursor: pointer;
+          margin-top: 10px;
+          border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Puffer Panel</h1>
+     <button class="visit" onclick="window.location.href='https://youtu.be/DS_PmdcpDmw'">YouTube video</button>
+      <p>Install Panel, Create User, also Start Panel</p>
+        <pre class="code">wget https://github.com/KSWarrior/Make-Own-Hosting/releases/download/PufferPanel/puffer_panel_ks.sh && bash puffer_panel_ks.sh</pre>
+        <button class="copy" onclick="copyCode(this)">Copy Code</button>
+    <script>
+    function copyCode(button) {
+        const codeElement = button.previousElementSibling;
+        const textArea = document.createElement("textarea");
+        textArea.value = codeElement.innerText;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        alert("Code copied to clipboard!");
+    }
+    </script>
+</body>
+</html>
