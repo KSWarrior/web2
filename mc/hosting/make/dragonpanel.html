@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dragon Panel Installation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    .button-group {
+      margin-bottom: 20px;
+    }
+    .button-group button {
+      background-color: #3fff05;
+      color: black;
+      padding: 10px 20px;
+      border: none;
+      margin-right: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .button-group button:hover {
+      background-color: #269106;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #ccc;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+    }
+    .copy-btn {
+      border-radius: 5px;
+      background-color: #3fff05;
+      margin-top: 10px;
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+    }
+    .copy-btn:hover {
+      background-color: #269106;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-top: 30px;
+      border-radius: 10px;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dragon Panel</h1>
+    <div class="button-group">
+      <button onclick="showSection('panel')">Panel</button>
+      <button onclick="showSection('wings')">Wings</button>
+      <button onclick="window.open('https://youtu.be/O3U5a7snGN0', '_blank')">Video</button>
+    </div>
+
+    <div id="panel" class="section">
+      <h2>Root folder</h2>
+      <pre id="panelcode1">sudo -s</pre>
+      <button class="copy-btn" onclick="copyCode('panelcode1')">Copy Code</button>
+
+      <h2>Install Panel</h2>
+      <pre id="panelcode2">wget https://github.com/KSWarrior/Make-Own-Hosting/releases/download/DragonPanel/panel.sh</pre>
+      <button class="copy-btn" onclick="copyCode('panelcode2')">Copy Code</button>
+
+      <h2>Start Panel</h2>
+      <pre id="panelcode3">bash panel.sh</pre>
+      <button class="copy-btn" onclick="copyCode('panelcode3')">Copy Code</button>
+    </div>
+
+    <div id="wings" class="section">
+      <h2>Root folder</h2>
+      <pre id="wingsCode1">sudo -s</pre>
+      <button class="copy-btn" onclick="copyCode('wingsCode1')">Copy Code</button>
+      
+      <h2>Install Wings</h2>
+      <pre id="wingsCode2">wget https://github.com/KSWarrior/Make-Own-Hosting/releases/download/DragonPanel/wings.sh</pre>
+      <button class="copy-btn" onclick="copyCode('wingsCode2')">Copy Code</button>
+
+      <h2>Start Wings</h2>
+      <pre id="wingsCode3">bash wings.sh</pre>
+      <button class="copy-btn" onclick="copyCode('wingsCode3')">Copy Code</button>
+    </div>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function copyCode(id) {
+      const code = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(code);
+    }
+
+    // Show Panel by default
+    showSection('panel');
+  </script>
+</body>
+        </html>
