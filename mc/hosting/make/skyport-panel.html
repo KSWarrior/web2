@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skyport Panel Install</title>
+  <style>
+    body {
+      background: #eee;
+      padding: 15px;
+    }
+    h1 { text-align: center; }
+    button {
+      padding: 10px 30px;
+      margin: 5px 5px 10px 0;
+      background: #3fff05;
+      border-color: #3fff05;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #29b300;
+    }
+    pre {
+      background: #000;
+      color: #fff;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    .section { display: none; }
+    .active { display: block; }
+  </style>
+</head>
+<body>
+    <h1>Skyport Panel</h1>
+    <button onclick="show('panel')">Panel</button>
+    <button onclick="show('wings')">Wings</button>
+    <button onclick="window.open('https://youtu.be/O3U5a7snGN0')">Video</button>
+
+    <div id="panel" class="section active">
+      <h3>Install Panel</h3>
+      <pre id="p1">sudo -s</pre><button onclick="copy('p1')">Copy</button>
+      <pre id="p2">wget https://github.com/KSWarrior/Make-Own-Hosting/releases/download/SkyportPanel/panel.sh</pre><button onclick="copy('p2')">Copy</button>
+      <pre id="p3">bash panel.sh</pre><button onclick="copy('p3')">Copy</button>
+    </div>
+
+    <div id="wings" class="section">
+      <h3>Install Wings</h3>
+      <pre id="w1">sudo -s</pre><button onclick="copy('w1')">Copy</button>
+      <pre id="w2">wget https://github.com/KSWarrior/Make-Own-Hosting/releases/download/SkyportPanel/wings.sh</pre><button onclick="copy('w2')">Copy</button>
+      <pre id="w3">bash wings.sh</pre><button onclick="copy('w3')">Copy</button>
+    </div>
+
+  <script>
+    function show(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+    function copy(id) {
+      navigator.clipboard.writeText(document.getElementById(id).innerText);
+    }
+  </script>
+</body>
+</html>
